@@ -1,14 +1,10 @@
-import 'package:js/js.dart';
-import 'dart:js';
 import 'package:flutter/cupertino.dart';
 import 'package:projectflutter/detail/sqflite_database.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'cart_model.dart';
 
-class CartProvider with  ChangeNotifier{
-
+class CartProvider with ChangeNotifier {
   DBHelper dbHelper = DBHelper();
 
   int _counter = 0;
@@ -16,7 +12,7 @@ class CartProvider with  ChangeNotifier{
   int get counter => _counter;
   int get quantity => _quantity;
 
-  double  _totalPrice = 0.0;
+  double _totalPrice = 0.0;
   double get totalPrice => _totalPrice;
 
   List<Cart> cart = [];
@@ -26,6 +22,7 @@ class CartProvider with  ChangeNotifier{
     notifyListeners();
     return cart;
   }
+
   void _setPrefsItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt('cart_items', _counter);
@@ -41,70 +38,72 @@ class CartProvider with  ChangeNotifier{
     _totalPrice = prefs.getDouble('total_price') ?? 0;
   }
 
-  void addCounter(){
+  void addCounter() {
     _counter++;
     _setPrefsItems();
     notifyListeners();
   }
 
-  void removeCounter(){
+  void removeCounter() {
     _counter--;
     _setPrefsItems();
     notifyListeners();
   }
 
-  int getCounter(){
+  int getCounter() {
     _getPrefsItems();
     return _counter;
   }
 
-  void addQuantity(int id){
+  void addQuantity(int id) {
     final index = cart.indexWhere((element) => element.id == id);
     final currentQuantity = cart[index].quantity!.value;
-    if(currentQuantity <= 1){
+    if (currentQuantity <= 1) {
       currentQuantity == 1;
-    }
-    else{
-      cart[index].quantity!.value = currentQuantity -1;
-    }
-    _setPrefsItems();
-    notifyListeners();
-  }
-
-  void deleteQuantity(int id){
-    final index = cart.indexWhere((element) => element.id == id);
-    final currentQuantity = cart[index].quantity!.value;
-    if(currentQuantity <= 1){
-      currentQuantity == 1;
-    }
-    else{
+    } else {
       cart[index].quantity!.value = currentQuantity - 1;
     }
     _setPrefsItems();
     notifyListeners();
   }
 
-  void removeItem(int id){
+  void deleteQuantity(int id) {
+    final index = cart.indexWhere((element) => element.id == id);
+    final currentQuantity = cart[index].quantity!.value;
+    if (currentQuantity <= 1) {
+      currentQuantity == 1;
+    } else {
+      cart[index].quantity!.value = currentQuantity - 1;
+    }
+    _setPrefsItems();
+    notifyListeners();
+  }
+
+  void removeItem(int id) {
     final index = cart.indexWhere((element) => element.id == id);
     cart.removeAt(index);
     _setPrefsItems();
     notifyListeners();
   }
-  int getQuantity(int quantity){
+
+  int getQuantity(int quantity) {
     _getPrefsItems();
     return _quantity;
   }
-  void addTotalPrice(double productPrice){
+
+  void addTotalPrice(double productPrice) {
     _totalPrice = _totalPrice + productPrice;
     _setPrefsItems();
     notifyListeners();
   }
-  void removeTotalPrice(double procuctPrice){
+
+  void removeTotalPrice(double procuctPrice) {
     _totalPrice = _totalPrice - procuctPrice;
     _setPrefsItems();
     notifyListeners();
   }
-  double getTotalPrice(){
+
+  double getTotalPrice() {
     _getPrefsItems();
     return _totalPrice;
   }

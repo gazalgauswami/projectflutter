@@ -11,12 +11,28 @@ import 'package:projectflutter/main/home.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:projectflutter/main/profile.dart';
+import 'package:provider/provider.dart';
 
-void main() async{
- WidgetsFlutterBinding.ensureInitialized();
- await Firebase.initializeApp();
+import 'model/CartProvider.dart';
 
-  runApp(const MaterialApp(home: MyApp()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  runApp(ChangeNotifierProvider(
+    create: (_) => CartProvider(),
+    child: Builder(builder: (context) {
+      return const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: MyApp(),
+      );
+    }),
+  )
+      //   const MaterialApp(
+      //   home: MyApp(),
+      //   debugShowCheckedModeBanner: false,
+      // ),
+      );
 }
 
 class MyApp extends StatefulWidget {
@@ -28,15 +44,14 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartProvider>(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(20.00),
-            child:
-
-            Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 const Text(
@@ -55,9 +70,10 @@ class _MyAppState extends State<MyApp> {
                     fontSize: 18.00,
                   ),
                 ),
-                const Image(image: AssetImage(
-                  "assets/image/more/fruit_gif.gif",
-                ),
+                const Image(
+                  image: AssetImage(
+                    "assets/image/more/fruit_gif.gif",
+                  ),
                   fit: BoxFit.contain,
                   width: 300,
                   height: 300,
@@ -69,20 +85,25 @@ class _MyAppState extends State<MyApp> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const SignInPage(),));
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SignInPage(),
+                            ));
                       },
                       child: Container(
                         alignment: Alignment.center,
                         width: 400,
                         height: 50,
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black,width: 2.00),
+                          border: Border.all(color: Colors.black, width: 2.00),
                           color: Colors.transparent,
                           borderRadius: BorderRadius.circular(23.00),
                         ),
-                        child: const Text("SIGN IN"
-                          ,style: TextStyle(
+                        child: const Text(
+                          "SIGN IN",
+                          style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                           ),
@@ -93,8 +114,12 @@ class _MyAppState extends State<MyApp> {
                       height: 20.00,
                     ),
                     GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpPage() ,));
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SignUpPage(),
+                            ));
                       },
                       child: Container(
                         alignment: Alignment.center,
@@ -105,8 +130,9 @@ class _MyAppState extends State<MyApp> {
                           color: Colors.pinkAccent,
                           borderRadius: BorderRadius.circular(23.00),
                         ),
-                        child: const Text("SIGN UP"
-                          ,style: TextStyle(
+                        child: const Text(
+                          "SIGN UP",
+                          style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
@@ -119,10 +145,7 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
         ),
-
       ),
     );
   }
 }
-
-

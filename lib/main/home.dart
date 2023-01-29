@@ -9,6 +9,7 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
+
 class _HomePageState extends State<HomePage> {
   int _selectedindex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
@@ -16,11 +17,12 @@ class _HomePageState extends State<HomePage> {
     CartPage(),
     ProfilePage(),
   ];
-  void _onitemTapped(int index){
+  void _onitemTapped(int index) {
     setState(() {
       _selectedindex = index;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -28,7 +30,7 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: BottomNavigationBar(
           items: const [
             BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+              icon: Icon(Icons.home),
               label: "Home Page",
             ),
             BottomNavigationBarItem(
@@ -36,9 +38,7 @@ class _HomePageState extends State<HomePage> {
               label: "Cart Page",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: "Profile Page"
-            ),
+                icon: Icon(Icons.person), label: "Profile Page"),
           ],
           elevation: 5,
           iconSize: 30.00,
@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
           onTap: _onitemTapped,
           selectedItemColor: Colors.pink,
           unselectedItemColor: Colors.black54,
-          type:  BottomNavigationBarType.fixed,
+          type: BottomNavigationBarType.fixed,
         ),
         body: Center(
           child: _widgetOptions.elementAt(_selectedindex),
