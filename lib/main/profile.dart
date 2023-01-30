@@ -23,6 +23,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
           body: SingleChildScrollView(
         child: Column(
           children: [
@@ -54,53 +55,53 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             SizedBox(
-              height: 40,
+              height: 150,
             ),
-            InkWell(
-              onTap: () {
-                getData();
-              },
-              child: Container(
-                width: double.infinity,
-                height: 50,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: Colors.pink, width: 3)),
-                child: Center(
-                  child: Text(
-                    "Email: $email",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.pink,
-                        fontSize: 20),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            InkWell(
-              onTap: () {
-                getData();
-              },
-              child: Container(
-                width: double.infinity,
-                height: 50,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: Colors.pink, width: 3)),
-                child: Center(
-                  child: Text(
-                    "Birth-Date: $bdate",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.pink,
-                        fontSize: 20),
-                  ),
-                ),
-              ),
-            ),
+            // InkWell(
+            //   onTap: () {
+            //     getData();
+            //   },
+            //   child: Container(
+            //     width: double.infinity,
+            //     height: 50,
+            //     decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(5),
+            //         border: Border.all(color: Colors.pink, width: 3)),
+            //     child: Center(
+            //       child: Text(
+            //         "Email: $email",
+            //         style: const TextStyle(
+            //             fontWeight: FontWeight.bold,
+            //             color: Colors.pink,
+            //             fontSize: 20),
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // const SizedBox(
+            //   height: 5,
+            // ),
+            // InkWell(
+            //   onTap: () {
+            //     getData();
+            //   },
+            //   child: Container(
+            //     width: double.infinity,
+            //     height: 50,
+            //     decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(5),
+            //         border: Border.all(color: Colors.pink, width: 3)),
+            //     child: Center(
+            //       child: Text(
+            //         "Birth-Date: $bdate",
+            //         style: const TextStyle(
+            //             fontWeight: FontWeight.bold,
+            //             color: Colors.pink,
+            //             fontSize: 20),
+            //       ),
+            //     ),
+            //   ),
+            // ),
             // const SizedBox(height: 5,),
             // InkWell(
             //   onTap: (){

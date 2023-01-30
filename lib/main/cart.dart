@@ -159,7 +159,7 @@ class _CartPageState extends State<CartPage> {
                                               children: [
                                                 TextSpan(
                                                   text:
-                                                      '${provider.cart[index].productPrice!}\u{20B9}\n',
+                                                      '\u{20B9}${provider.cart[index].productPrice!}\n',
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                   ),

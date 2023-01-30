@@ -63,10 +63,7 @@ class _BuyPageState extends State<BuyPage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomePage()));
+                    Navigator.pop(context);
                   },
                   child: Container(
                     alignment: Alignment.center,

@@ -349,7 +349,7 @@ class _FruitPageState extends State<FruitPage> {
                                           children: [
                                             TextSpan(
                                                 text:
-                                                    '${data[index]['price'].toString()}\u{20B9}\n',
+                                                    '\u{20B9}${data[index]['price'].toString()}\n',
                                                 style: const TextStyle(
                                                     fontWeight:
                                                         FontWeight.bold))

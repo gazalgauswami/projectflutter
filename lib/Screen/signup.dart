@@ -15,7 +15,6 @@ class SignUpPage extends StatefulWidget {
   @override
   State<SignUpPage> createState() => _SignUpPageState();
 }
-
 class _SignUpPageState extends State<SignUpPage> {
   final _auth = FirebaseAuth.instance;
 
@@ -46,7 +45,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.light_pink,
+        backgroundColor: AppColors.light_green,
         body: Center(
           child: SingleChildScrollView(
             child: Column(
@@ -307,11 +306,10 @@ class _SignUpPageState extends State<SignUpPage> {
                     };
                     dbref.push().set(user);
                     Fluttertoast.showToast(msg: "Account Create Successfully");
-                    // if()
-                    // signUp(_email.text,_pass.text);
-                    // _formKey.currentState!.validate()){
-                    //   Navigator.push(context, MaterialPageRoute(builder: (context)=>const SignInPage()));
-                    // }
+                    if(
+                    _formKey.currentState!.validate()){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const SignInPage()));
+                    }
                   },
                   child: Container(
                     alignment: Alignment.center,
