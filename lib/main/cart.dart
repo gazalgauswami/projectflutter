@@ -1,5 +1,6 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:projectflutter/colors.dart';
 import 'package:projectflutter/detail/sqflite_database.dart';
 import 'package:projectflutter/main/home.dart';
 import 'package:projectflutter/model/CartProvider.dart';
@@ -37,11 +38,18 @@ class _CartPageState extends State<CartPage> {
                   child: Badge(
                     badgeContent: Consumer<CartProvider>(
                       builder: (context, value, child) {
-                        return Text(
-                          value.getCounter().toString(),
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                        return SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: Center(
+                            child: Text(
+                              value.getCounter().toString(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 19
+                              ),
+                            ),
                           ),
                         );
                       },
@@ -97,7 +105,7 @@ class _CartPageState extends State<CartPage> {
                           return Container(
                             width: double.infinity,
                             height: 70,
-                            color: Colors.pinkAccent[100],
+                            color: AppColors.light_green,
                             child: Padding(
                               padding: EdgeInsets.all(4.00),
                               child: Row(
@@ -144,20 +152,21 @@ class _CartPageState extends State<CartPage> {
                                         RichText(
                                             maxLines: 1,
                                             text: TextSpan(
-                                              text: 'Price: ' r"$",
+                                              text: 'Price: ',
                                               style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 16.00),
                                               children: [
                                                 TextSpan(
                                                   text:
-                                                      '${provider.cart[index].productPrice!}\n',
+                                                      '${provider.cart[index].productPrice!}\u{20B9}\n',
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 ),
                                               ],
-                                            )),
+                                            )
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -209,6 +218,7 @@ class _CartPageState extends State<CartPage> {
                                   //         text: val.toString(),
                                   //       );
                                   //     }),
+
                                   IconButton(
                                       onPressed: () {
                                         dbHelper!.deleteCartItem(
@@ -246,7 +256,7 @@ class _CartPageState extends State<CartPage> {
                         builder: (context, val, child) {
                           return ReusableWidget(
                               title: 'Sub-Total',
-                              value: r'$' + (val?.toStringAsFixed(2) ?? '0'));
+                              value: '\u{20B9}${val?.toStringAsFixed(2) ?? '0'}');
                         }),
                   ],
                 );

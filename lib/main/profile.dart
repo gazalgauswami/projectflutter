@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:projectflutter/main.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -33,7 +34,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   border: Border.all(color: Colors.pink, width: 3)),
               child: const Center(
                 child: Text(
-                  "My Profile",
+                  "My Account",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
@@ -158,6 +159,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     MaterialPageRoute(
                       builder: (context) => const MyApp(),
                     ));
+                Fluttertoast.showToast(msg: "Sign Out Succesfully");
               },
               child: Container(
                 alignment: Alignment.center,
@@ -169,10 +171,10 @@ class _ProfilePageState extends State<ProfilePage> {
                   borderRadius: BorderRadius.circular(23.00),
                 ),
                 child: const Text(
-                  "SIGN OUT",
+                  "Sign Out",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 23,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -189,6 +191,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     MaterialPageRoute(
                       builder: (context) => const MyApp(),
                     ));
+                Fluttertoast.showToast(msg: "Account Delete Succesfully");
               },
               child: Container(
                 alignment: Alignment.center,
@@ -203,7 +206,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   "Delete Account",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

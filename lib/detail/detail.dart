@@ -290,7 +290,7 @@ class _DetailPageState extends State<DetailPage> {
                   ));
             },
             child: Container(
-                width: 330,
+                width: 300,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 decoration: BoxDecoration(

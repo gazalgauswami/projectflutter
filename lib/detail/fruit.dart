@@ -67,11 +67,20 @@ class _FruitPageState extends State<FruitPage> {
           "1. Low in Calories But High in Nutrients\n2. The King of Antioxidant Foods\n3. Reduce DNA Damage, Which May Help Protect Against Aging and Cancer\n4. Protect Cholesterol in Your Blood From Becoming Damaged\n5. May Lower Blood Pressure"
     },
     {
+      "name": "Fruit Basket",
+      "price": 300,
+      "image": "assets/image/fruit/fruits.png",
+      "color": AppColors.light_r,
+      "color2": AppColors.dark_r,
+      "des":
+          "1.Facilitates Weight Loss\n2. Packed with nutrients\n.3.Fruits Prevents Blood clotting\n4.Give your immunity a boost\n5.Maintain your healthy vision"
+    },
+    {
       "name": "Cherry",
       "price": 120,
       "image": "assets/image/fruit/cherry.png",
-      "color": AppColors.dark_green,
-      "color2": AppColors.light_green,
+      "color": AppColors.dark_p,
+      "color2": AppColors.light_p,
       "des":
           "1Relives Insomnia\n2.Facilitates Weight Loss\n3.Lowers Hypertension\n4.Prevents Cardiovascular Diseases\n5.Anti-Ageing Properties"
     },
@@ -185,10 +194,18 @@ class _FruitPageState extends State<FruitPage> {
                 Badge(
                   badgeContent:
                       Consumer<CartProvider>(builder: (context, value, child) {
-                    return Text(
-                      value.getCounter().toString(),
-                      style: const TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                    return SizedBox(
+                      height: 20,
+                      width: 20,
+                      child: Center(
+                        child: Text(
+                          value.getCounter().toString(),
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 19),
+                        ),
+                      ),
                     );
                   }),
                   // position: BadgePosition.topEnd(),
@@ -198,7 +215,7 @@ class _FruitPageState extends State<FruitPage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => CartPage(),
+                              builder: (context) => const CartPage(),
                             ));
                       },
                       icon: const Icon(Icons.shopping_cart, color: Colors.pink),
@@ -230,21 +247,24 @@ class _FruitPageState extends State<FruitPage> {
               ],
             ),
             const Text(
-              "All Fruits",
+              "Find Fresh Fruits What You Want",
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-                color: Colors.black,
-              ),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Colors.black87,
+                  fontFamily: "Raleway"),
             ),
             const SizedBox(
               height: 10,
             ),
             Container(
+              width: 330,
+              height: 50,
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 2),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.black),
+                color: Colors.pink[100],
                 borderRadius: const BorderRadius.all(Radius.circular(20)),
               ),
               child: const TextField(
@@ -260,12 +280,10 @@ class _FruitPageState extends State<FruitPage> {
                     border: InputBorder.none),
               ),
             ),
-            sliderImage(),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: 10,
             ),
-            // allFruits(),
-            // allFruit(),
+            sliderImage(),
             Expanded(
               child: ListView.builder(
                   padding: const EdgeInsets.symmetric(
@@ -342,7 +360,7 @@ class _FruitPageState extends State<FruitPage> {
                               ),
                               ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                      primary: Colors.red[800]),
+                                      backgroundColor: Colors.red[800]),
                                   onPressed: () {
                                     saveData(index);
                                   },
@@ -457,7 +475,7 @@ class _FruitPageState extends State<FruitPage> {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.00),
               image: const DecorationImage(
-                image: AssetImage("assets/image/more/sale1.jpg"),
+                image: AssetImage("assets/image/more/sale3.jpg"),
                 fit: BoxFit.cover,
               )),
         ),
@@ -467,15 +485,6 @@ class _FruitPageState extends State<FruitPage> {
               borderRadius: BorderRadius.circular(8.00),
               image: const DecorationImage(
                 image: AssetImage("assets/image/more/sale2.jpg"),
-                fit: BoxFit.cover,
-              )),
-        ),
-        Container(
-          margin: const EdgeInsets.all(6.00),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.00),
-              image: const DecorationImage(
-                image: AssetImage("assets/image/more/sale3.jpg"),
                 fit: BoxFit.cover,
               )),
         ),
@@ -511,10 +520,10 @@ class _FruitPageState extends State<FruitPage> {
         height: 180.0,
         enlargeCenterPage: true,
         autoPlay: true,
-        aspectRatio: 16 / 9,
+        aspectRatio: 10 / 9,
         autoPlayCurve: Curves.fastOutSlowIn,
         enableInfiniteScroll: true,
-        autoPlayAnimationDuration: const Duration(microseconds: 800),
+        autoPlayAnimationDuration: const Duration(microseconds: 100),
         viewportFraction: 0.8,
       ),
     );
